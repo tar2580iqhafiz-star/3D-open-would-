@@ -1,0 +1,6 @@
+{
+  "name": "Verdant Isle 3D Sandbox",
+  "description": "Offline-ready 3D open-world sandbox game prototype with articulated character controls, virtual joystick, third-person camera, and sunlit test island.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

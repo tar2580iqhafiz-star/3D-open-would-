@@ -1,0 +1,59 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    namespace 'com.verdantisle.sandbox'
+    compileSdk 35
+
+    defaultConfig {
+        applicationId "com.verdantisle.sandbox"
+        minSdk 23
+        targetSdk 35
+        versionCode 1
+        versionName "1.0.0"
+
+        buildConfigField "String", "ADMOB_APP_ID", "\"ca-app-pub-1097647548047380~4558161173\""
+        manifestPlaceholders = [
+            adMobAppId: "ca-app-pub-1097647548047380~4558161173"
+        ]
+    }
+
+    buildFeatures {
+        buildConfig true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "ADMOB_REWARDED_AD_UNIT_ID", "\"ca-app-pub-1097647548047380/8090212075\""
+            buildConfigField "boolean", "ADMOB_USE_TEST_ADS", "false"
+        }
+        debug {
+            minifyEnabled false
+            // Keep Google's official test rewarded ad unit active in debug builds
+            buildConfigField "String", "ADMOB_REWARDED_AD_UNIT_ID", "\"ca-app-pub-3940256099942544/5224354917\""
+            buildConfigField "boolean", "ADMOB_USE_TEST_ADS", "true"
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+}
+
+dependencies {
+    implementation 'androidx.core:core-ktx:1.15.0'
+    implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation 'androidx.webkit:webkit:1.12.1'
+    // Official Google Mobile Ads SDK for Android Rewarded Ads
+    implementation 'com.google.android.gms:play-services-ads:23.6.0'
+}
